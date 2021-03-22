@@ -1,6 +1,8 @@
 package com.udacity.jdnd.c1.review.controller;
 import com.udacity.jdnd.c1.review.model.ChatForm;
 import com.udacity.jdnd.c1.review.service.MessageService;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,17 +19,18 @@ public class ChatController {
         this.messageService = messageService;
     }
 
-    @GetMapping("/chat")
+    @GetMapping()
     public String getChatPage(ChatForm chatForm, Model model) {
-        model.addAttribute ("chatMessages", this.messageService.getMessage());
+        model.addAttribute ("chatMessages", this.messageService.getMessage(chatForm.getUsername()));
         return "chat";
     }
 
-    @PostMapping("/chat")
-    public String postChatMessage(ChatForm chatForm, Model model) {
+    @PostMapping()
+    public String postChatMessage(Authentication authentication, ChatForm chatForm, Model model) {
+        chatForm.setUsername(authentication.getName());
         this.messageService.addMessage(chatForm);
         chatForm.setMessageText("");
-        model.addAttribute("chatMessages", this.messageService.getMessage());
+        model.addAttribute("chatMessages", this.messageService.getMessage(chatForm.getUsername()));
         return "chat";
     }
     @ModelAttribute("allMessageTypes")

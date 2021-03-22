@@ -5,19 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-<form action="@{/chat}" method="post" th:object="${ChatForm}">
+<form th:action="@{/chat}" method="post" th:object="${chatForm}">
 
     <label for="username">Username:</label>
-    <input id="username" type="text">
+    <input id="username" type="text" name="username" th:field="*{username}">
     <label for="messageText">Message Text:</label>
-    <input id="messageText" type="text" th:field="*{messageText}">
+    <input id="messageText" type="text" name="messageText" th:field="*{messageText}">
     <label for="messageType">Message Type: </label>
     <!-- <select id="messageType">
         <option selected>Say</option>
         <option>Shout</option>
         <option>Whisper</option>
     </select> -->
-    <select id="messageType" th:field="*{messageType}">
+    <select id="messageType" name="messageType" th:field="*{messageType}">
         <option
                 th:each="type : ${allMessageTypes}"
                 th:value="${type}"
@@ -28,7 +28,7 @@
     </select>
     <input type="submit">
 </form>
-<div th:each="chatMessage : ${chatMessages}">
+<div th:each="chatMessage : ${chatMessages}"> <!--recoger los mensajes del usuario-->
     <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.message}">Hello, world!</span>
 </div>
 </body>
