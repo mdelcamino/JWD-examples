@@ -3,9 +3,18 @@ package com.udacity.jdnd.c1.review.model;
 public class ChatMessage {
     private String messageid;
     private String username;
-    private String message;
+    private String messageText;
 
     public ChatMessage() {}
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
+
 
     public String getUsername() {
         return username;
@@ -13,14 +22,6 @@ public class ChatMessage {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public String getMessageid() {

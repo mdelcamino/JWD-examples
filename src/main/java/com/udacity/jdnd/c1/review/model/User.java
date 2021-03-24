@@ -1,19 +1,20 @@
 package com.udacity.jdnd.c1.review.model;
 
 public class User {
+    private Integer userid;
     private String username;
     private String password;
     private String salt;
-    private Integer userid;
+
     private String surname;
     private String lastname;
 
-    public User(String username, String password, String salt, Integer userid, String surname, String lastname) {
+    public User(Integer userid,String username, String password, String salt,  String surname, String lastname) {
+        this.userid = userid;
         this.username = username;
         this.password = password;
         this.salt = salt;
-        this.userid = userid;
-        this.surname = surname;
+       this.surname = surname;
         this.lastname = lastname;
     }
 

@@ -27,7 +27,7 @@ public class SignupController {
     public String signupuser(@ModelAttribute User user, Model model) {
         String signupError = null;
 
-        if (!userservice.isUserAvailable(user.getUsername())) {
+        if (userservice.isUserAvailable(user.getUsername())) {
             signupError = "The user already exists";
         }
         if (signupError == null) {

@@ -29,7 +29,7 @@
     <input type="submit">
 </form>
 <div th:each="chatMessage : ${chatMessages}"> <!--recoger los mensajes del usuario-->
-    <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.message}">Hello, world!</span>
+    <span th:text="${chatMessage.username}">Username</span>: <span th:text="${chatMessage.messageText}">Hello, world!</span>
 </div>
 </body>
 </html>

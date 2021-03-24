@@ -26,15 +26,15 @@ public class MessageService {
         ChatMessage newMessage= new ChatMessage(); //como si fuera la tabla de la bbdd
         newMessage.setUsername(chatform.getUsername());
         switch (chatform.getMessageType()) {
-            case "Say" -> newMessage.setMessage(chatform.getMessageText());
-            case "Shout" -> newMessage.setMessage(chatform.getMessageText().toUpperCase());
-            case "Whisper" -> newMessage.setMessage(chatform.getMessageText().toLowerCase());
+            case "Say" -> newMessage.setMessageText(chatform.getMessageText());
+            case "Shout" -> newMessage.setMessageText(chatform.getMessageText().toUpperCase());
+            case "Whisper" -> newMessage.setMessageText(chatform.getMessageText().toLowerCase());
         }
            messageMapper.insert(newMessage);
     }
     public List<ChatMessage> getMessage(String username)
     {
-        return (List<ChatMessage>) messageMapper.getAllMessages(username);
+        return  messageMapper.getAllMessages(username);
 
 
     }

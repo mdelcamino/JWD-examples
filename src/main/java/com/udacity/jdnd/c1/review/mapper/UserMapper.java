@@ -13,8 +13,8 @@ boolean checkUserExists(@Param("email") String email);*/
     @Select("SELECT * FROM USERS WHERE username= #{username}")
     User getUser(String username);
 
-    @Insert(" INSERT INTO USERS VALUES (userid, username, password, salt, surname, lastname)" +
-            "VALUES(#{userid}, #{username}, #{password}) , #{salt}, #{surname}, #{lastname})")
+    @Insert(" INSERT INTO USERS (username, password, salt, surname, lastname)" +
+            "VALUES( #{username}, #{password}, #{salt}, #{surname}, #{lastname})")
     @Options(useGeneratedKeys = true, keyProperty = "userid")
     int insert(User user);
 
